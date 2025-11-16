@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee
+                             https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
+         version="5.0">
+
+    <display-name>HelpDesk Management System</display-name>
+
+    <!-- DB config (you can override via container env too) -->
+    <context-param>
+        <param-name>JDBC_URL</param-name>
+        <param-value>jdbc:mysql://localhost:3306/helpdesk_db?useSSL=false&amp;serverTimezone=UTC</param-value>
+    </context-param>
+    <context-param>
+        <param-name>JDBC_USER</param-name>
+        <param-value>root</param-value>
+    </context-param>
+    <context-param>
+        <param-name>JDBC_PASSWORD</param-name>
+        <param-value>your_password_here</param-value>
+    </context-param>
+
+    <!-- Load DB driver and config -->
+    <listener>
+        <listener-class>com.mobinyousefi.helpdesk.config.DBConnectionManager</listener-class>
+    </listener>
+
+    <!-- Servlets -->
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>com.mobinyousefi.helpdesk.web.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.mobinyousefi.helpdesk.web.LogoutServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TicketListServlet</servlet-name>
+        <servlet-class>com.mobinyousefi.helpdesk.web.TicketListServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TicketListServlet</servlet-name>
+        <url-pattern>/tickets</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TicketCreateServlet</servlet-name>
+        <servlet-class>com.mobinyousefi.helpdesk.web.TicketCreateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TicketCreateServlet</servlet-name>
+        <url-pattern>/tickets/new</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TicketDetailServlet</servlet-name>
+        <servlet-class>com.mobinyousefi.helpdesk.web.TicketDetailServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TicketDetailServlet</servlet-name>
+        <url-pattern>/tickets/detail</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TicketUpdateStatusServlet</servlet-name>
+        <servlet-class>com.mobinyousefi.helpdesk.web.TicketUpdateStatusServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TicketUpdateStatusServlet</servlet-name>
+        <url-pattern>/tickets/updateStatus</url-pattern>
+    </servlet-mapping>
+
+    <!-- Session config -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+    <!-- Welcome file -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>

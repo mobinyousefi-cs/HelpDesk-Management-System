@@ -1,0 +1,8 @@
+</main>
+<footer class="app-footer">
+    <p>© <%= java.time.Year.now() %> HelpDesk Management System —
+        Developed by <a href="https://github.com/mobinyousefi-cs" target="_blank">Mobin Yousefi</a>
+    </p>
+</footer>
+</body>
+</html>

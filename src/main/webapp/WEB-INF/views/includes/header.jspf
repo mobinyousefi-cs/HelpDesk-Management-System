@@ -1,0 +1,27 @@
+<%@ taglib uri="http://jakarta.ee/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HelpDesk Management System</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/styles.css">
+</head>
+<body>
+<header class="app-header">
+    <div class="brand">
+        <span class="brand-title">HelpDesk</span>
+        <span class="brand-subtitle">Ticket-based Complaint System</span>
+    </div>
+
+    <c:if test="${not empty sessionScope.currentUser}">
+        <nav class="nav">
+            <a href="${pageContext.request.contextPath}/tickets">Tickets</a>
+            <a href="${pageContext.request.contextPath}/tickets/new">New Ticket</a>
+
+            <form action="${pageContext.request.contextPath}/logout" method="post" class="logout-form">
+                <button type="submit">Logout (${sessionScope.currentUser.username})</button>
+            </form>
+        </nav>
+    </c:if>
+</header>
+<main class="app-main">

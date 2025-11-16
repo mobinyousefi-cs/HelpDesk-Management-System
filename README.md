@@ -156,5 +156,5 @@ http://localhost:8080/helpdesk-management-system
 - Password: admin123
 
 ### Customer
-Username: customer1
-Password: customer123
+- Username: customer1
+- Password: customer123
